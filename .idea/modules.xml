@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/ItzyAndroid.iml" filepath="$PROJECT_DIR$/.idea/ItzyAndroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/itzyandroid.iml" filepath="$PROJECT_DIR$/.idea/modules/itzyandroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/itzyandroid.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/itzyandroid.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/itzyandroid.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/itzyandroid.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/itzyandroid.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/itzyandroid.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/itzyandroid.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/itzyandroid.app.unitTest.iml" />
     </modules>
   </component>
 </project>
