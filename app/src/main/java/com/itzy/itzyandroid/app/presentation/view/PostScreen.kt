@@ -1,21 +1,18 @@
 package com.itzy.itzyandroid.app.presentation.view
 
-import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.itzy.itzyandroid.R
 import com.itzy.itzyandroid.app.presentation.component.MainPostItem
 import com.itzy.itzyandroid.app.presentation.component.PostItem
-import com.itzy.itzyandroid.ui.theme.MainBlue
-import com.itzy.itzyandroid.ui.theme.TextStyles
+import com.itzy.itzyandroid.app.presentation.component.PostTitle
+import com.itzy.itzyandroid.app.presentation.navigation.Screen
 
 @Composable
 fun PostScreen(
@@ -31,7 +28,6 @@ fun PostScreen(
         PostTitle(title = "시각장애인 게시판")
         Row(
             modifier = Modifier
-                //  .align(CenterHorizontally)
                 .padding(30.dp)
                 .fillMaxWidth(),
             horizontalArrangement = Arrangement.Center
@@ -50,30 +46,9 @@ fun PostScreen(
         }
         for (i in 1..10){
             PostItem(modifier = Modifier
-                .padding(20.dp, 10.dp)
-                .fillMaxWidth())
+                .padding(vertical = 10.dp)
+                .fillMaxWidth()
+                .clickable{navController.navigate(Screen.PostDetailScreen.route)})
         }
     }
 }
-
-@Composable
-fun PostTitle(
-    title: String = "게시판"
-){
-    Row{
-        Image(
-            painter = painterResource(id = R.drawable.bookmark),
-            contentDescription = "bookmark image",
-            modifier = Modifier
-                .padding(end = 10.dp)
-                .size(33.dp)
-        )
-        Text(
-            text = title,
-            style = TextStyles.TextBasics1,
-            color = MainBlue,
-            modifier = Modifier.align(Alignment.CenterVertically)
-        )
-    }
-}
-
