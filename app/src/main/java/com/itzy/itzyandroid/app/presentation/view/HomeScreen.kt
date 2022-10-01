@@ -41,7 +41,8 @@ fun HomeScreen(
         topBar(
             modifier = Modifier
                 .padding(13.dp, 11.dp)
-                .fillMaxWidth()
+                .fillMaxWidth(),
+            searchClick = {navController.navigate(Screen.SearchScreen.route)}
         )
         Divider(color = Black, modifier = Modifier
             .fillMaxWidth()

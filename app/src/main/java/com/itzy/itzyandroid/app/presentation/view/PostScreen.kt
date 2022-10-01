@@ -35,13 +35,13 @@ fun PostScreen(
             MainPostItem(
                 resId = R.drawable.add_post,
                 title = "글쓰기",
-                onClick = {}
+                onClick = {navController.navigate(Screen.WritePostScreen.route)}
             )
             Spacer(modifier = Modifier.width(20.dp))
             MainPostItem(
                 resId = R.drawable.search,
                 title = "검색하기",
-                onClick = {}
+                onClick = {navController.navigate(Screen.SearchScreen.route)},
             )
         }
         for (i in 1..10){
