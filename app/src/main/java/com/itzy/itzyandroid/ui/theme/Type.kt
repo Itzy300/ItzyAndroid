@@ -33,6 +33,11 @@ object TextStyles{
         fontWeight = FontWeight.Normal,
         fontSize = 14.sp,
     )
+    val TextSmall1 = TextStyle(
+        fontFamily = Roboto,
+        fontWeight = FontWeight.Normal,
+        fontSize = 12.sp,
+    )
 
 
 }
