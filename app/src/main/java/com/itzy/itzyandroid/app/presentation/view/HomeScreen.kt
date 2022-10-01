@@ -27,6 +27,8 @@ import com.itzy.itzyandroid.R
 import com.itzy.itzyandroid.app._enums.DisablePost
 import com.itzy.itzyandroid.app._enums.LocationPost
 import com.itzy.itzyandroid.app._enums.MainPost
+import com.itzy.itzyandroid.app.presentation.component.MainPostItem
+import com.itzy.itzyandroid.app.presentation.navigation.Screen
 import com.itzy.itzyandroid.ui.theme.*
 
 @Composable
@@ -58,18 +60,14 @@ fun HomeScreen(
                             resId = it.image,
                             title = it.name,
                             modifier = Modifier
-                                .clip(shape = Shapes.small)
-                                .background(MainBlue2)
-                                .size(100.dp, 115.dp)
-                                .border(0.5.dp, MainGray2, shape = Shapes.small)
-                                .padding(top = 15.dp, bottom = 10.dp)
+
                         )
                         Spacer(modifier = Modifier.width(13.dp))
                     }
                 }
             }
         }
-        CategoryItem(modifier = Modifier, myType = 0)
+        CategoryItem(modifier = Modifier, myType = 0, onClick = {navController.navigate(Screen.PostScreen.route)})
         CategoryItem(modifier = Modifier, myType = 1)
     }
 }
@@ -129,35 +127,6 @@ fun topBar(
 }
 
 @Composable
-fun MainPostItem(
-    modifier: Modifier = Modifier,
-    @DrawableRes resId: Int = R.drawable.info,
-    title: String = "게시판",
-    onClick: () -> Unit = {}
-){
-    Column(
-        modifier = modifier.clickable(onClick = onClick)
-    ){
-        Image(
-            painter = painterResource(id = resId),
-            contentDescription = title,
-            modifier = Modifier
-                .size(55.dp)
-                .align(CenterHorizontally)
-        )
-        Text(
-            text = title,
-            color = Black,
-            style = TextStyles.TextBasics3,
-            textAlign = TextAlign.Center,
-            modifier = Modifier
-                .padding(top = 15.dp)
-                .align(CenterHorizontally)
-        )
-    }
-}
-
-@Composable
 fun CategoryTitle(
     modifier: Modifier = Modifier,
     @DrawableRes resId: Int = R.drawable.info,
@@ -185,7 +154,8 @@ fun CategoryTitle(
 @Composable
 fun CategoryItem(
     modifier: Modifier = Modifier,
-    myType: Int = 0
+    myType: Int = 0,
+    onClick: () -> Unit = {}
 ){
     var expandedState by remember { mutableStateOf(false) }
     val rotationState by animateFloatAsState(
@@ -218,11 +188,11 @@ fun CategoryItem(
                 when(myType) {
                     0 -> DisablePost::class.sealedSubclasses.mapNotNull { it.objectInstance }
                         .subList(0, if (expandedState) DisablePost::class.sealedSubclasses.size else 3
-                        ).forEach { DetailCategory(it.name) }
+                        ).forEach { DetailCategory(it.name, onClick) }
 
                     else -> LocationPost::class.sealedSubclasses.mapNotNull { it.objectInstance }
                         .subList(0, if (expandedState) LocationPost::class.sealedSubclasses.size else 3
-                        ).forEach { DetailCategory(it.name) }
+                        ).forEach { DetailCategory(it.name, onClick) }
                 }
                 Row(
                     modifier = Modifier
